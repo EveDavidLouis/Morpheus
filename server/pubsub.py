@@ -105,7 +105,7 @@ class Copilot(WebSocketHandler):
 			self._close()
 
 	async def process(self,data):
-		payload = {'data':data}
+		payload = data
 		return payload
 
 	def on_close(self):
