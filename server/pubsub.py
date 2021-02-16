@@ -83,7 +83,7 @@ class Subscription(WebSocketHandler):
 			
 	def send(self, message):
 		try:
-			self.write_message(dict(response=message,session=str(self.request.__dict__)))
+			self.write_message(dict(response=message,session=str(self.request.headers.__dict__)))
 		except WebSocketClosedError:
 			self._close()
 
