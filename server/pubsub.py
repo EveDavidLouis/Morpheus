@@ -83,24 +83,27 @@ class Subscription(WebSocketHandler):
 			
 	def send(self, message):
 		try:
-			self.write_message(dict(response=message,session=str(self.request.headers.__dict__)))
+			self.write_message(dict(response=message))
 		except WebSocketClosedError:
 			self._close()
 
 
 
 class Copilot(WebSocketHandler):
+	
 	async def open(self):
 		payload = await self.process('open')
 		await self.send(payload)
 
 	async def on_message(self, message):
-		payload = await self.process(message)
-		await self.send(payload)
+		if 'X-Session' in self.request.headers:
+			session = self.request.headers['X-Session']
+			payload = await self.process(message)
+			await self.send(payload)			
 
 	async def send(self, message):
 		try:
-			self.write_message(dict(response=message,headers=str(self.request.headers.__dict__)))
+			self.write_message(dict(response=message,session=str(self.request.headers['X-Session'])))
 		except WebSocketClosedError:
 			self._close()
 
