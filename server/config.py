@@ -21,3 +21,4 @@ mongodb = dict(
 	,db 		= os.environ.get('MONGO_DB','test')
 )
 mongodb['url'] = 'mongodb://'+mongodb['user']+':'+ mongodb['pwd'] +'@'+str(mongodb['host'])+':'+str(mongodb['port']) +'/' + mongodb['db'] 
+mongodb['url'] = 'mongodb+srv://'+mongodb['user']+':'+mongodb['pwd']+'@'+str(mongodb['host'])+'/'+mongodb['db']+'?retryWrites=true&w=majority'
