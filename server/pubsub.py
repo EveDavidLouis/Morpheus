@@ -82,36 +82,30 @@ class Subscription(WebSocketHandler):
 
 class Copilot_Subscriber(WebSocketHandler):
 	
-	def __init__(self,db):
-		self.db = db
-		self.session = None
-
 	async def open(self):
 		payload = await self.process('open')
 		await self.send(payload)
 
 	async def on_message(self, message):
 		if 'X-Session' in self.request.headers:
-			self.session = self.request.headers['X-Session']
+			session = self.request.headers['X-Session']
 			payload = await self.process(message)
 			await self.send(payload)			
 
 	async def send(self, message):
 		try:
-			self.write_message(dict(response=message,session=self.session))
+			self.write_message(dict(response=message))
 		except WebSocketClosedError:
 			self._close()
 
 	async def process(self,data):
 		payload = data
-
-		result = await self.db['message'].insert_one({'$set':data})
-
+		db = self.settings['db']
+		result = await db['message'].insert_one({'message':data})
 		return payload
 
 	def on_close(self):
 		logger.info("WebSocket closed")
-
 
 class ISS_Publisher(Publisher):
 	async def produce(self):

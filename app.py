@@ -19,7 +19,7 @@ class Application(web.Application):
 			(r"/styles/(.*)"    ,web.StaticFileHandler, {"path": "docs/styles"}),
 			(r"/scripts/(.*)"   ,web.StaticFileHandler, {"path": "docs/scripts"}),
 			(r'/iss', pubsub.Subscription, dict(publisher=pubsub.ISS_Publisher(db))),
-			(r'/copilot', pubsub.Copilot_Subscriber(db)),
+			(r'/copilot', pubsub.Copilot_Subscriber),
 			(r'/', MainHandler)]
 		
 		settings = dict(	
@@ -46,7 +46,9 @@ if __name__ == "__main__":
 
 	#application
 	db = MotorClient(config.mongodb['url'])[config.mongodb['db']]
+
 	app = Application(db)
+	app.settings['db'] = db
 
 	#start IOloop
 	ioloop.IOLoop.current().start()
