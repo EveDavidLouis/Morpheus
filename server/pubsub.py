@@ -53,6 +53,7 @@ class Subscription(WebSocketHandler):
 	async def open(self):
 		#logger.warning("New subscriber.")
 		self.publisher.register(self)
+		self start_pinging()
 		await self.run()
 
 	def on_close(self):
@@ -88,6 +89,7 @@ class Copilot_Subscriber(WebSocketHandler):
 
 	async def open(self):
 		payload = await self.process('open')
+		self start_pinging()
 		await self.send(payload)
 
 	async def on_message(self, message):
