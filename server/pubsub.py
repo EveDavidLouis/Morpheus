@@ -81,7 +81,11 @@ class Subscription(WebSocketHandler):
 			self._close()
 
 class Copilot_Subscriber(WebSocketHandler):
-	
+
+	def __init(self):
+		super().__init()
+		self.session = None
+
 	async def open(self):
 		payload = await self.process('open')
 		await self.send(payload)
@@ -108,10 +112,13 @@ class Copilot_Subscriber(WebSocketHandler):
 		logger.info("WebSocket closed")
 
 class ISS_Publisher(Publisher):
+	
+	def __init(self):
+		super().__init()
+		self.session = None
+		
 	async def produce(self):
 	
-		#document = yield _db.pilots.find_one({'refresh_token':self.name},{'CharacterID':1,'CharacterName':1}) 	
-		
 		headers = {}
 		url = 'http://api.open-notify.org/iss-now.json'
 		request = { 'kwargs':{'method':'GET','headers':headers} , 'url':url }
