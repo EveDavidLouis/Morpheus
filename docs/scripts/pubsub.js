@@ -36,7 +36,7 @@ function connectCoPilot() {
 }
 
 window.onload = function () {
-	connecISS();
+	connectISS();
 	connectCoPilot();
 };
 
