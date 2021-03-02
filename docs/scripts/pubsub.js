@@ -19,7 +19,7 @@ function connectISS() {
 }
 
 function connectCoPilot() {
-	options.headers= {"X-Session":create_UUID()}
+	options = {"headers" : {"X-Session":create_UUID()}};
 	socketCoPilot = new WebSocket(host + '/copilot',[],options);
 	socketCoPilot.onmessage = function (msg) {
 		
