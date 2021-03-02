@@ -13,7 +13,6 @@ function connectISS() {
 	socketISS.onmessage = function (msg) {
 		
 		var data = JSON.parse(msg.data);
-		console.log(data);
 		document.querySelector('#ISS').innerHTML = JSON.stringify(data, null, 2);	
 	};
 
