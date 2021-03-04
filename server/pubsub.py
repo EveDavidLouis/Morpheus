@@ -83,13 +83,14 @@ class Subscription(WebSocketHandler):
 class Copilot_Subscriber(WebSocketHandler):
 		
 	def __init(self):
+		super(Copilot_Subscriber,self).__init()
 		self.session = None
 		self.db = self.settings['db']		
-		super().__init()
 
 	async def open(self,session):
 		self.session = session
-		logger.info("OPEN with session:" + session)
+		logger.warning("OPEN with session:" + self.session)
+		logger.warning("OPEN with db:" + self.session)
 		#self.close()
 
 	async def on_message(self, message):
