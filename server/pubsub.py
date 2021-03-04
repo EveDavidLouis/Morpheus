@@ -90,7 +90,7 @@ class Copilot_Subscriber(WebSocketHandler):
 	async def open(self,session):
 		self.session = session
 		logger.warning("OPEN with session:" + self.session)
-		logger.warning("OPEN with db:" + self.session)
+		logger.warning("OPEN with db:" + self.db)
 		#self.close()
 
 	async def on_message(self, message):
