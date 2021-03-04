@@ -8,7 +8,7 @@ import json
 
 import logging
 logger = logging.getLogger('pubsub')
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARNING)
 
 class Publisher(object):
 	"""Handles new data to be passed on to subscribers."""
@@ -88,6 +88,8 @@ class Copilot_Subscriber(WebSocketHandler):
 		self.db = self.settings['db']
 
 	async def open(self):
+		logger.warning("OPEN")
+		logger.warning(self.request.headers.__dict__)
 		if 'X-Session' in self.request.headers:
 			self.session = self.request.headers['X-Session']
 		else:
