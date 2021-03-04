@@ -87,13 +87,10 @@ class Copilot_Subscriber(WebSocketHandler):
 		self.session = None
 		self.db = self.settings['db']
 
-	async def open(self):
-		if 'X-Session' in self.request.headers:
-			logger.warning("OPEN")
-			self.session = self.request.headers['X-Session']
-		else:
-			logger.warning("OPEN without SESSION ID")
-			#self.close()
+	async def open(self,session):
+		self.session = session
+		logger.info("OPEN with session:" + session)
+		#self.close()
 
 	async def on_message(self, message):
 		payload = await self.process(message)
