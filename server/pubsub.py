@@ -84,8 +84,7 @@ class Copilot_Subscriber(WebSocketHandler):
 		
 	def __init(self):
 		super().__init__()
-		self.session = None
-		self.db = self.settings['db']		
+		self.session = None	
 
 	async def open(self,session):
 		self.session = session
@@ -103,7 +102,7 @@ class Copilot_Subscriber(WebSocketHandler):
 			self.close()
 
 	async def process(self,data):
-		result = await self.db['message'].update_one({'message':data},{'$inc': {'count': 1}},upsert=True)
+		result = await self.settings['db']['message'].update_one({'message':data},{'$inc': {'count': 1}},upsert=True)
 		return data
 
 	def on_close(self):
