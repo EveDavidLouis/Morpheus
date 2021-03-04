@@ -98,7 +98,7 @@ class Copilot_Subscriber(WebSocketHandler):
 
 	async def send(self, message):
 		try:
-			self.write_message(dict(response=message))
+			self.write_message(dict(response=message,session=self.session))
 		except WebSocketClosedError:
 			self.close()
 
