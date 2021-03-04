@@ -88,7 +88,7 @@ class Copilot_Subscriber(WebSocketHandler):
 
 	async def open(self,session):
 		self.session = session
-		logger.warning(self.__dict)		
+		logger.warning(self.__dict__)		
 		#self.close()
 
 	async def on_message(self, message):
