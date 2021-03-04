@@ -103,7 +103,7 @@ class Copilot_Subscriber(WebSocketHandler):
 			self.close()
 
 	async def process(self,data):
-		result = await db['message'].update_one({'message':data},{'$inc': {'count': 1}},upsert=True)
+		result = await self.db['message'].update_one({'message':data},{'$inc': {'count': 1}},upsert=True)
 		return data
 
 	def on_close(self):
