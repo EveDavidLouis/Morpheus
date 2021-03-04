@@ -83,9 +83,9 @@ class Subscription(WebSocketHandler):
 class Copilot_Subscriber(WebSocketHandler):
 		
 	def __init(self):
-		super().__init()
 		self.session = None
-		self.db = self.settings['db']
+		self.db = self.settings['db']		
+		super().__init()
 
 	async def open(self,session):
 		self.session = session
