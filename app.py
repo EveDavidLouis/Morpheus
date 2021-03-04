@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.WARNING)
 
 class Application(web.Application):
 
-	def __init__(self,db):
+	def __init__(self):
 
 		handlers = [
 			(r"/images/(.*)"    ,web.StaticFileHandler, {"path": "docs/images"}),
@@ -47,7 +47,7 @@ if __name__ == "__main__":
 	#application
 	db = MotorClient(config.mongodb['url'])[config.mongodb['db']]
 
-	app = Application(db)
+	app = Application()
 	app.settings['db'] = db
 
 	#start IOloop
