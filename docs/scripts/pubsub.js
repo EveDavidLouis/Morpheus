@@ -1,5 +1,5 @@
 var socketISS, socketCoPilot
-var host
+var host , session
 
 if (window.location.hostname == '0.0.0.0' || window.location.hostname == 'localhost'){
 	host = 'ws://'+ window.location.host
@@ -19,8 +19,7 @@ function connectISS() {
 }
 
 function connectCoPilot() {
-	options = {"headers" : {"X-Session":create_UUID()}};
-	socketCoPilot = new WebSocket(host + '/copilot',[],options);
+	socketCoPilot = new WebSocket(host + '/copilot/' + session);
 	socketCoPilot.onmessage = function (msg) {
 		
 		var data = JSON.parse(msg.data);
@@ -31,6 +30,7 @@ function connectCoPilot() {
 }
 
 window.onload = function () {
+	session = create_UUID();
 	connectISS();
 	connectCoPilot();
 };
