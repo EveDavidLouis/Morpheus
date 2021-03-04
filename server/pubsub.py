@@ -81,14 +81,10 @@ class Subscription(WebSocketHandler):
 			self._close()
 
 class Copilot_Subscriber(WebSocketHandler):
-		
-	def __init(self):
-		super().__init__()
-		self.session = None	
-		self.mongodb =  self.settings['db']
-
+	
 	async def open(self,session):
 		self.session = session
+		self.mongodb =  self.settings['db']		
 		logger.warning(self.__dict__)		
 		#self.close()
 
