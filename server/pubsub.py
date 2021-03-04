@@ -85,16 +85,15 @@ class Copilot_Subscriber(WebSocketHandler):
 	async def open(self,session):
 		self.session = session
 		self.mongodb =  self.settings['db']		
-		logger.warning(self.__dict__)		
 		#self.close()
-
+	
 	async def on_message(self, message):
 		payload = await self.process(message)
 		await self.send(payload)			
 
 	async def send(self, message):
 		try:
-			self.write_message(dict(response=message,session=self.session,db=str(self.mongodb)))
+			self.write_message(dict(response=message,session=self.session))
 		except WebSocketClosedError:
 			self.close()
 
