@@ -1,0 +1,62 @@
+{
+  "PA44:": {
+    "title": "Piper Seminole checklist",
+    "checklists": [
+      "PRE START",
+      "STARTING ENGINE",
+      "TAXING"
+    ],
+    "PRE START:": {
+      "Seat": "Adjust and lock",
+      "Belt,harness": "Fastened",
+      "Brakes": "Set",
+      "Circuit breakers": "In",
+      "Landing gear": "Down",
+      "Avionics": "Off",
+      "Cowl flap": "Open",
+      "Fuel selector": "On",
+      "Carburetor heat": "Off",
+      "Battery switch": "On",
+      "Landing": {},
+      "Alternators ": "On"
+    },
+    "STARTING ENGINE:": {
+      "LEFT ENGINE:": {
+        "Magneto switches": "On",
+        "Mixture": "Rich",
+        "Propeller": "High RPM",
+        "Throttle": "1/2 inch Open",
+        "Prime": "As required",
+        "Fuel pump": "On",
+        "Propeller area": "Clear",
+        "Starter": "On",
+        "Oil pressure": "25 PSI in 30 seconds",
+        "Ammeter": "Check",
+        "Suction": "Check"
+      },
+      "RIGHT ENGINE:": {
+        "Magneto switches": "On",
+        "Mixture": "Rich",
+        "Propeller": "High RPM",
+        "Throttle": "1/2 inch Open",
+        "Prime": "As required",
+        "Fuel pump": "On",
+        "Propeller area": "Clear",
+        "Starter": "On",
+        "Oil pressure": "25 PSI in 30 seconds",
+        "Ammeter": "Check",
+        "Suction": "Check"
+      },
+      "Mixture": "Lean for taxi",
+      "Strobe light": "On",
+      "Radio": "On",
+      "Transponder": "Alt"
+    },
+    "TAXING:": {
+      "Parking Brake": "Off",
+      "Brakes": "Check",
+      "Cross Feed": "Check",
+      "Flight Instruments": "Check"
+    }
+  }
+}
