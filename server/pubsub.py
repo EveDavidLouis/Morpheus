@@ -49,7 +49,8 @@ class Subscription(WebSocketHandler):
 		self.publisher = publisher
 		self.messages = Queue()
 		self.finished = False
-
+	def check_origin(self, origin):
+		return True
 	async def open(self):
 		#logger.warning("New subscriber.")
 		self.publisher.register(self)
