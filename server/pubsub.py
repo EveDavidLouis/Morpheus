@@ -88,6 +88,9 @@ class Copilot_Subscriber(WebSocketHandler):
 		self.mongodb =  self.settings['db']		
 		#self.close()
 	
+	def check_origin(self, origin):
+		return True
+
 	async def on_message(self, message):
 		payload = await self.process(message)
 		await self.send(payload)			
