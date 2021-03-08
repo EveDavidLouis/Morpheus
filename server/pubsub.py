@@ -113,7 +113,7 @@ class Copilot_Subscriber(WebSocketHandler):
 				payload += 'ANNOUNCE:' + q['data'][0]['ANNOUNCE']
 
 			elif 'NEXT' in self.q['data'][0] :
-				payload += 'NEXT:'+ checklist + ' checklist complete, next checklist will be ' + self.q['data'][0]['NEXT']
+				payload += 'NEXT:'+ self.checklist + ' checklist complete, next checklist will be ' + self.q['data'][0]['NEXT']
 				waitingFor = None
 			else:
 				for k,v in self.q['data'][0].items():
