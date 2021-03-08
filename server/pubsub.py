@@ -107,7 +107,7 @@ class Copilot_Subscriber(WebSocketHandler):
 
 	async def process(self,data):
 		result = await self.settings['db']['message'].update_one({'message':data},{'$inc': {'count': 1}},upsert=True)
-		return q['status']
+		return self.q['status']
 	
 	def loadchecklist(self,airplane,checklist):
 		with open('./docs/checklists.json') as json_file:
