@@ -107,7 +107,7 @@ class Copilot_Subscriber(WebSocketHandler):
 
 	async def process(self,data):
 		result = await self.settings['db']['message'].update_one({'message':data},{'$inc': {'count': 1}},upsert=True)
-		payload = None
+		payload = ''
 		if len(self.q['data']) > 0 :
 			if 'ANNOUNCE' in self.q['data'][0] :
 				payload += 'ANNOUNCE:' + q['data'][0]['ANNOUNCE']
