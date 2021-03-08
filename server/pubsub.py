@@ -108,7 +108,12 @@ class Copilot_Subscriber(WebSocketHandler):
 	async def process(self,data):
 		result = await self.settings['db']['message'].update_one({'message':data},{'$inc': {'count': 1}},upsert=True)
 		payload = ''
-		if len(self.q['data']) > 0 :
+		if 'checklist' in data:
+			self.checklist = data.replace(' checklist', '')
+			self.q = self.loadchecklist(self.airplane,self.checklist)
+			payload = 'Loading the ' + data
+
+		elif len(self.q['data']) > 0 :
 			if 'ANNOUNCE' in self.q['data'][0] :
 				payload +=  q['data'][0]['ANNOUNCE']
 
@@ -121,7 +126,8 @@ class Copilot_Subscriber(WebSocketHandler):
 					self.waitWord = v
 					payload +=  ',' + self.waitWord
 			self.q['data'].pop(0)
-
+		else:
+			payload = 'I am not sure what you mean by:' + data
 		return payload
 	
 	def loadchecklist(self,airplane,checklist):
