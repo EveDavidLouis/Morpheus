@@ -119,7 +119,7 @@ class Copilot_Subscriber(WebSocketHandler):
 				for k,v in self.q['data'][0].items():
 					payload += 'CALLING:' + k
 					self.waitWord = v
-					payload += 'WAITING : ' + waitingFor
+					payload += 'WAITING : ' + self.waitWord
 			q['data'].pop(0)
 
 		return payload
