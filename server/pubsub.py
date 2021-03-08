@@ -110,7 +110,7 @@ class Copilot_Subscriber(WebSocketHandler):
 		return q['status']
 	
 	def loadchecklist(self,airplane,checklist):
-		with open('../docs/checklists.json') as json_file:
+		with open('./docs/checklists.json') as json_file:
 			data = json.load(json_file)
 		if airplane.upper() in data:
 			if checklist.upper() in data[airplane.upper()]['CHECKLISTS']:
