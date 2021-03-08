@@ -110,16 +110,16 @@ class Copilot_Subscriber(WebSocketHandler):
 		payload = ''
 		if len(self.q['data']) > 0 :
 			if 'ANNOUNCE' in self.q['data'][0] :
-				payload += 'ANNOUNCE:' + q['data'][0]['ANNOUNCE']
+				payload +=  q['data'][0]['ANNOUNCE']
 
 			elif 'NEXT' in self.q['data'][0] :
-				payload += 'NEXT:'+ self.checklist + ' checklist complete, next checklist will be ' + self.q['data'][0]['NEXT']
-				waitingFor = None
+				payload += self.checklist + ' checklist complete, next checklist will be ' + self.q['data'][0]['NEXT']
+				waitingFor = ''
 			else:
 				for k,v in self.q['data'][0].items():
-					payload += 'CALLING:' + k
+					payload +=  k
 					self.waitWord = v
-					payload += 'WAITING : ' + self.waitWord
+					payload +=  ','self.waitWord
 			self.q['data'].pop(0)
 
 		return payload
