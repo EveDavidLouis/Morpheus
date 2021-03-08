@@ -85,7 +85,11 @@ class Copilot_Subscriber(WebSocketHandler):
 	
 	async def open(self,session):
 		self.session = session
-		self.mongodb =  self.settings['db']		
+		self.mongodb =  self.settings['db']
+		self.airplane = None
+		self.checklist = None
+		self.waitWord = None
+		self.q = self.loadchecklist('PA44','TAXING')
 		#self.close()
 	
 	def check_origin(self, origin):
@@ -103,7 +107,18 @@ class Copilot_Subscriber(WebSocketHandler):
 
 	async def process(self,data):
 		result = await self.settings['db']['message'].update_one({'message':data},{'$inc': {'count': 1}},upsert=True)
-		return data
+		return q['status']
+	
+	def loadchecklist(airplane,checklist):
+		with open('checklists.json') as json_file:
+			data = json.load(json_file)
+		if airplane.upper() in data:
+			if checklist.upper() in data[airplane.upper()]['CHECKLISTS']:
+				return dict(status='OK',data=[d for d in data[airplane]['CHECKLISTS'][checklist.upper()]])
+			else:
+				return dict(status='ERROR',data='I can not find the '+checklist+' checklist for ' + airplane + ' aircraft')
+		else:
+			return dict(status='ERROR',data='I have no checklist for ' + airplane + ' aircraft')
 
 	def on_close(self):
 		logger.info("WebSocket closed")
