@@ -108,15 +108,15 @@ class Copilot_Subscriber(WebSocketHandler):
 	async def process(self,data):
 		result = await self.settings['db']['message'].update_one({'message':data},{'$inc': {'count': 1}},upsert=True)
 		payload = None
-		if len(q['data']) > 0 :
-			if 'ANNOUNCE' in q['data'][0] :
+		if len(self.q['data']) > 0 :
+			if 'ANNOUNCE' in self.q['data'][0] :
 				payload += 'ANNOUNCE:' + q['data'][0]['ANNOUNCE']
 
-			elif 'NEXT' in q['data'][0] :
-				payload += 'NEXT:'+ checklist + ' checklist complete, next checklist will be ' + q['data'][0]['NEXT']
+			elif 'NEXT' in self.q['data'][0] :
+				payload += 'NEXT:'+ checklist + ' checklist complete, next checklist will be ' + self.q['data'][0]['NEXT']
 				waitingFor = None
 			else:
-				for k,v in q['data'][0].items():
+				for k,v in self.q['data'][0].items():
 					payload += 'CALLING:' + k
 					self.waitWord = v
 					payload += 'WAITING : ' + waitingFor
