@@ -121,6 +121,7 @@ class Copilot_Subscriber(WebSocketHandler):
 				payload += self.checklist + ' checklist complete, next checklist will be ' + self.q['data'][0]['NEXT']
 				waitingFor = ''
 			else:
+				logger.warning(self.q['data'][0])
 				for k,v in self.q['data'][0].items():
 					payload +=  k
 					self.waitWord = v
