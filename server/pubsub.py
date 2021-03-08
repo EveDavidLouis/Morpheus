@@ -86,10 +86,10 @@ class Copilot_Subscriber(WebSocketHandler):
 	async def open(self,session):
 		self.session = session
 		self.mongodb =  self.settings['db']
-		self.airplane = None
-		self.checklist = None
+		self.airplane = 'PA44'
+		self.checklist = 'TAXING'
 		self.waitWord = None
-		self.q = self.loadchecklist('PA44','TAXING')
+		self.q = self.loadchecklist(self.airplane,self.checklist)
 		#self.close()
 	
 	def check_origin(self, origin):
