@@ -1,10 +1,10 @@
 {
   "PA44": {
-    "TITEL": "Piper Seminole checklist",
+    "TITLE": "Piper Seminole checklist",
     "CHECKLISTS": {
       "PRE START": [
         {"Seat": "Adjust and lock"},
-        {"Belt},harness": "Fastened"},
+        {"Belt,harness": "Fastened"},
         {"Brakes": "Set"},
         {"Circuit breakers": "In"},
         {"Landing gear": "Down"},
@@ -22,7 +22,7 @@
         {"Magneto switches": "On"},
         {"Mixture": "Rich"},
         {"Propeller": "High RPM"},
-        {"Throttle": "1/2 inch Open"},
+        {"Throttle": "Half inch Open"},
         {"Prime": "As required"},
         {"Fuel pump": "On"},
         {"Propeller area": "Clear"},
@@ -48,9 +48,9 @@
         {"Strobe light": "On"},
         {"Radio": "On"},
         {"Transponder": "Alt"},
-        {"NEXT": "TAXING"}
+        {"NEXT": "BEFORE TAXI"}
       ],
-      "TAXING": [
+      "BEFORE TAXI": [
         {"Parking Brake": "Off"},
         {"Brakes": "Check"},
         {"Cross Feed": "Check"},

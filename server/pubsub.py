@@ -8,7 +8,7 @@ import json
 
 import logging
 logger = logging.getLogger('pubsub')
-logging.basicConfig(level=logging.WARNING)
+logging.basicConfig(level=logging.INFO)
 
 class Publisher(object):
 	"""Handles new data to be passed on to subscribers."""
@@ -84,22 +84,25 @@ class Subscription(WebSocketHandler):
 class Copilot_Subscriber(WebSocketHandler):
 	
 	async def open(self,session):
+		logger.info('a wild pilot logged in')
 		self.session = session
 		self.mongodb =  self.settings['db']
 		self.airplane = 'PA44'
 		self.checklist = 'TAXING'
 		self.waitWord = None
-		self.q = self.loadchecklist(self.airplane,self.checklist)
+		self.q = dict(status='OPEN',data='')
 		#self.close()
 	
 	def check_origin(self, origin):
 		return True
 
 	async def on_message(self, message):
+		logger.info('somebody says:' + message)
 		payload = await self.process(message)
 		await self.send(payload)			
 
 	async def send(self, message):
+		logger.info('copilot says:' + message)
 		try:
 			self.write_message(dict(response=message,session=self.session))
 		except WebSocketClosedError:
@@ -109,13 +112,16 @@ class Copilot_Subscriber(WebSocketHandler):
 		result = await self.settings['db']['message'].update_one({'message':data},{'$inc': {'count': 1}},upsert=True)
 		payload = ''
 		if 'checklist' in data:
-			self.checklist = data.replace(' checklist', '')
+			self.checklist = data.replace(' checklist', '').upper()
 			self.q = self.loadchecklist(self.airplane,self.checklist)
-			payload = 'Loading the ' + data
+			if self.q['status'] == 'OK':
+				payload = 'Loading the ' + data
+			else:
+				payload = self.q['data']
 
-		elif len(self.q['data']) > 0 :
+		elif self.q['status'] == 'OK' and len(self.q['data']) > 0 :
 			if 'ANNOUNCE' in self.q['data'][0] :
-				payload +=  q['data'][0]['ANNOUNCE']
+				payload +=  self.q['data'][0]['ANNOUNCE']
 
 			elif 'NEXT' in self.q['data'][0] :
 				payload += self.checklist + ' checklist complete, next checklist will be ' + self.q['data'][0]['NEXT']
@@ -127,8 +133,10 @@ class Copilot_Subscriber(WebSocketHandler):
 					self.waitWord = v
 					payload +=  ',' + self.waitWord
 			self.q['data'].pop(0)
+		elif 'help' in data:
+			payload = 'You could ask me to load a specific checklist.For example say "STARTING ENGINE CHECKLIST"'
 		else:
-			payload = 'I am not sure what you mean by:' + data
+			payload = 'you said:' + data + '. But i am not sure how to repond to that yet.'
 		return payload
 	
 	def loadchecklist(self,airplane,checklist):

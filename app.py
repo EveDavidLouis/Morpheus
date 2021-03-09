@@ -7,7 +7,7 @@ import os
 
 import logging
 logger = logging.getLogger('app')
-logging.basicConfig(level=logging.WARNING)
+logging.basicConfig(level=logging.info)
 
 class Application(web.Application):
 
