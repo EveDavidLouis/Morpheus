@@ -1,0 +1,165 @@
+PA28:
+  TITLE: Piper Arrow III
+  CHECKLISTS:
+    BEFORE START:
+      - Seat: Adjust and lock
+      - 'Belt,harness': Fastened
+      - Landing gear: Down
+      - Parking Brakes: Set
+      - Mixture: Idle
+      - Magneto switches: 'Off'
+      - Battery switch: 'On'
+      - Circuit breakers: In
+      - Fuel: Check Quantity
+      - Fuel selector: Fullest Tank
+      - NEXT: START ENGINE
+    START ENGINE:
+      - Battery switch: 'On'
+      - Alternator switch: 'On'
+      - Throttle: Half inch Open
+      - Propeller: High RPM
+      - Electric Fuel pump: 'On'
+      - Mixture: Rich then Idle
+      - Propeller area: Clear
+      - Starter: Engage
+      - Mixure: Full Rich
+      - Oil pressure: Check
+      - Throttle: 1400 to 1500 RPM
+      - NEXT: BEFORE TAXI
+    BEFORE TAXI:
+      - Parking Brake: 'Off'
+      - Brakes: Check
+      - Flight Instruments: Check
+      - NEXT: BEFORE TAKEOFF
+    BEFORE TAKEOFF:
+      - Battery switch: 'On'
+      - Alternator switch: 'On'
+      - Flight Instruments: Check
+      - Fuel selector: Fullest Tank
+      - Electric Fuel pump: 'On'
+      - Engine Gauges: Check
+      - Alternate Air: Closed
+      - Mixure: Set
+      - Propeller: Set
+      - Flaps: Set
+      - Trim: Set
+      - Flight controls: Free and Correct
+      - Doors: Closed and Secure
+      - NEXT: AFTER TAKEOFF
+    AFTER TAKEOFF:
+      - Gear: Up
+      - Flaps: Up
+      - Power: 2500 RPM
+      - Airspeed: 72 to 104 Knots
+      - NEXT: CRUISE
+    CRUISE:
+      - Throttle: Per Charts
+      - Propeller: Per Charts
+      - Mixure: Lean
+      - Engine Instruments: Check
+      - NEXT: DESCENT
+    DESCENT:
+      - Fuel selector: Fullest Tank
+      - Electric Fuel pump: 'On'
+      - Seat: Adjust and lock
+      - 'Belt,harness': Fastened
+      - Avionics and Autopilot: Set
+      - Altimeter: Set
+      - NEXT: APPROACH AND LANDING
+    APPROACH AND LANDING:
+      - Landing Gear: Down
+      - Mixure: Rich
+      - Propeller: High RPM
+      - Flaps: Set
+      - NEXT: AFTER LANDING
+    AFTER LANDING:
+      - Landing Gear: Down
+      - Mixure: Rich
+      - Propeller: High RPM
+      - Flaps: Set
+      - NEXT: AFTER LANDING
+PA44:
+  TITLE: Piper Seminole checklist
+  CHECKLISTS:
+    BEFORE STARTING:
+      - Seat: Adjust and lock
+      - Beltharness: Fastened
+      - Brakes: Set
+      - Circuit breakers: In
+      - Landing gear: Down
+      - Avionics: 'Off'
+      - Cowl flap: Open
+      - Fuel selector: 'On'
+      - Carburetor heat: 'Off'
+      - Battery switch: 'On'
+      - 'Alternators ': 'On'
+      - NEXT: STARTING ENGINE
+    STARTING ENGINE:
+      - ANNOUNCE: starting Left Engine
+      - Magneto switches: 'On'
+      - Mixture: Rich
+      - Propeller: High RPM
+      - Throttle: Half inch Open
+      - Prime: As required
+      - Fuel pump: 'On'
+      - Propeller area: Clear
+      - Starter: 'On'
+      - Oil pressure: 25 PSI in 30 seconds
+      - Ammeter: Check
+      - Suction: Check
+      - ANNOUNCE: Left Engine completed
+      - ANNOUNCE: starting Right Engine
+      - Magneto switches: 'On'
+      - Mixture: Rich
+      - Propeller: High RPM
+      - Throttle: half inch Open
+      - Prime: As required
+      - Fuel pump: 'On'
+      - Propeller area: Clear
+      - Starter: 'On'
+      - Oil pressure: 25 PSI in 30 seconds
+      - Ammeter: Check
+      - Suction: Check
+      - ANNOUNCE: Right Engine completed
+      - Mixture: Lean for taxi
+      - Strobe light: 'On'
+      - Radio: 'On'
+      - Transponder: Alt
+      - NEXT: BEFORE TAXI
+    BEFORE TAXI:
+      - Parking Brake: 'Off'
+      - Brakes: Check
+      - Steering: Check
+      - Flight Instruments: Check
+      - NEXT: BEFORE TAKEOFF
+    BEFORE TAKEOFF:
+      - Parking Brake: 'On'
+      - Mixure controls: Forward
+      - Prop controls: Forward
+      - Throttle controls: 1500 RPM
+      - Prop controls: 'check feathering, 500 RPM max drop'
+      - Throttle controls: 2000 RPM
+      - Prop controls: Full forward
+      - Carburator Heat: Check
+      - Magnetos: 'max drop 175RPM, ,max difference frop 50 RPM'
+      - Alternator output: check
+      - Gyro suction gauge: '4,8 to 5.2'
+      - Throttles: 800 to 1000 RPM
+      - Fuel Selectors: 'ON'
+      - Electric fuel pumps: 'ON'
+      - Alternators: 'ON'
+      - Engine gauge: in the green
+      - Annunciator Panel: press to test
+      - Altitude indicator: set
+      - Clock: set
+      - Mixures: set
+      - Primers: locked
+      - Propellers: set in forward position
+      - carburator heat: 'Off'
+      - Cowl flaps: set
+      - Trim: set
+      - Controls: 'Free, full travel'
+      - Doors: Latched
+      - Air conditioner: 'Off'
+      - Pitot heat: As required
+      - NEXT: TAKEOFF

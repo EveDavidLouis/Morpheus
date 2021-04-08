@@ -4,7 +4,7 @@ from tornado.queues import Queue
 
 from motor.motor_tornado import MotorClient
 
-import json
+import json, yaml
 
 import logging
 logger = logging.getLogger('pubsub')
@@ -87,8 +87,8 @@ class Copilot_Subscriber(WebSocketHandler):
 		logger.info('a wild pilot logged in')
 		self.session = session
 		self.mongodb =  self.settings['db']
-		self.airplane = 'PA44'
-		self.checklist = 'TAXING'
+		self.airplane = 'PA28'
+		self.checklist = ''
 		self.waitWord = None
 		self.q = dict(status='OPEN',data='')
 		#self.close()
@@ -120,6 +120,7 @@ class Copilot_Subscriber(WebSocketHandler):
 				payload = self.q['data']
 
 		elif self.q['status'] == 'OK' and len(self.q['data']) > 0 :
+			
 			if 'ANNOUNCE' in self.q['data'][0] :
 				payload +=  self.q['data'][0]['ANNOUNCE']
 
@@ -129,19 +130,21 @@ class Copilot_Subscriber(WebSocketHandler):
 			else:
 				logger.warning(self.q['data'][0])
 				for k,v in self.q['data'][0].items():
-					payload +=  k
 					self.waitWord = v
-					payload +=  ',' + self.waitWord
+					payload += k + '............' + v
+
 			self.q['data'].pop(0)
 		elif 'help' in data:
-			payload = 'You could ask me to load a specific checklist.For example say "STARTING ENGINE CHECKLIST"'
+			payload = 'You could ask me to load a specific checklist. For example say "STARTING ENGINE CHECKLIST"'
+		elif any(x in data for x in ['hello','hi']):
+			payload = 'Hello, how are you doing today?'
 		else:
-			payload = 'you said:' + data + '. But i am not sure how to repond to that yet.'
+			payload = 'you said:' + data + '. But i am not sure how to respond to that yet.'
 		return payload
 	
 	def loadchecklist(self,airplane,checklist):
-		with open('./docs/checklists.json') as json_file:
-			data = json.load(json_file)
+		with open('./docs/checklists.yaml') as file:
+			data = yaml.load(file)
 		if airplane.upper() in data:
 			if checklist.upper() in data[airplane.upper()]['CHECKLISTS']:
 				return dict(status='OK',data=[d for d in data[airplane]['CHECKLISTS'][checklist.upper()]])

@@ -1,11 +1,102 @@
 {
-  "PA44": {
+  "PA28": {
+  "TITLE": "Piper Arrow III",
+  "CHECKLISTS": {
+    "BEFORE START":[
+      {"Seat": "Adjust and lock"},
+      {"Belt,harness": "Fastened"},
+      {"Landing gear": "Down"},
+      {"Parking Brakes": "Set"},
+      {"Mixure": "Idle"},
+      {"Magneto switches": "Off"},
+      {"Battery switch": "On"},
+      {"Circuit breakers": "In"},
+      {"Fuel": "Check Quantity"},
+      {"Fuel selector": "Fullest Tank"},
+      {"NEXT": "ENGINE START"}
+    ],
+    "START ENGINE":[
+      {"Battery switch": "On"},
+      {"Alternator switch":"On"},
+      {"Throttle": "Half inch Open"},
+      {"Propeller": "High RPM"},
+      {"Electric Fuel pump": "On"},
+      {"Mixure": "Rich then Idle"},
+      {"Propeller area": "Clear"},
+      {"Starter": "Engage"},
+      {"Mixure": "Full Rich"},
+      {"Oil pressure": "Check"},
+      {"Throttle": "1400 to 1500 RPM"},
+      {"NEXT": "BEFORE TAXI"}
+    ],
+    "BEFORE TAXI": [
+        {"Parking Brake": "Off"},
+        {"Brakes": "Check"},
+        {"Flight Instruments": "Check"},
+        {"NEXT": "BEFORE TAKEOFF"}
+    ],
+    "BEFORE TAKEOFF":[
+      {"Battery switch": "On"},
+      {"Alternator switch":"On"},
+      {"Flight Instruments": "Check"},
+      {"Fuel selector": "Fullest Tank"},
+      {"Electric Fuel pump": "On"},
+      {"Engine Gauges": "Check"},
+      {"Alternate Air": "Closed"},
+      {"Mixure": "Set"},
+      {"Propeller": "Set"},
+      {"Flaps": "Set"},
+      {"Trim": "Set"},
+      {"Flight controls": "Free and Correct"},
+      {"Doors": "Closed and Secure"},
+      {"NEXT": "AFTER TAKEOFF"}
+    ],
+    "AFTER TAKEOFF":[
+      {"Gear": "Up"},
+      {"Flaps": "Up"},
+      {"Power": "2500 RPM"},
+      {"Airspeed": "72 to 104 Knots"},
+      {"NEXT": "CRUISE"}
+    ],
+     "CRUISE":[
+      {"Throttle": "Per Charts"},
+      {"Propeller": "Per Charts"},
+      {"Mixure": "Lean"},
+      {"Engine Instruments": "Check"},
+      {"NEXT": "DESCENT"}
+    ],
+    "DESCENT":[
+      {"Fuel selector": "Fullest Tank"},
+      {"Electric Fuel pump": "On"},
+      {"Seat": "Adjust and lock"},
+      {"Belt,harness": "Fastened"},
+      {"Avionics and Autopilot": "Set"},
+      {"Altimeter":"Set"},
+      {"NEXT": "APPROACH AND LANDING"}
+    ],
+     "APPROACH AND LANDING":[
+      {"Landing Gear": "Down"},
+      {"Mixure": "Rich"},
+      {"Propeller": "High RPM"},
+      {"Flaps": "Set"}
+      {"NEXT": "AFTER LANDING"}
+    ],
+    "AFTER LANDING":[
+      {"Landing Gear": "Down"},
+      {"Mixure": "Rich"},
+      {"Propeller": "High RPM"},
+      {"Flaps": "Set"}
+      {"NEXT": "AFTER LANDING"}
+    ]
+  }
+
+  ,"PA44": {
     "TITLE": "Piper Seminole checklist",
     "CHECKLISTS": {
-      "PRE START": [
+      "BEFORE START": [
         {"Seat": "Adjust and lock"},
         {"Belt,harness": "Fastened"},
-        {"Brakes": "Set"},
+        {"Parking Brakes": "Set"},
         {"Circuit breakers": "In"},
         {"Landing gear": "Down"},
         {"Avionics": "Off"},
@@ -13,11 +104,10 @@
         {"Fuel selector": "On"},
         {"Carburetor heat": "Off"},
         {"Battery switch": "On"},
-        {"Landing Gear": "Up"},
         {"Alternators ": "On"},
-        {"NEXT": "STARTING ENGINE"}
+        {"NEXT": "ENGINE START"}
       ],
-      "STARTING ENGINE": [
+      "ENGINE START": [
         {"ANNOUNCE": "starting Left Engine"},
         {"Magneto switches": "On"},
         {"Mixture": "Rich"},
@@ -35,7 +125,7 @@
         {"Magneto switches": "On"},
         {"Mixture": "Rich"},
         {"Propeller": "High RPM"},
-        {"Throttle": "1/2 inch Open"},
+        {"Throttle": "half inch Open"},
         {"Prime": "As required"},
         {"Fuel pump": "On"},
         {"Propeller area": "Clear"},
@@ -55,7 +145,7 @@
         {"Brakes": "Check"},
         {"Cross Feed": "Check"},
         {"Flight Instruments": "Check"},
-        {"NEXT": "TAKEOFF"}
+        {"NEXT": "BEFORE TAKEOFF"}
       ]
     }
   }
