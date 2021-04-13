@@ -71,7 +71,7 @@ function process(rawText) {
   let response = null;
   switch(text) {
     case "hello":
-      response = "hi, how are you doing?"; break;
+      response = "Hello, how are you doing?"; break;
     case "what'syourname":
       response = "My name is Copilot.";  break;
     case "howareyou":
