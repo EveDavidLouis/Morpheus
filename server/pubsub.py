@@ -139,17 +139,24 @@ class Copilot_Subscriber(WebSocketHandler):
 		elif any(x in data for x in ['hello','hi']):
 			payload = 'Hello, how are you doing today?'
 		else:
-			payload = 'you said:' + data + '. But i am not sure how to respond to that yet.'
+			payload = 'you said:' + data
 		return payload
 	
 	def loadchecklist(self,airplane,checklist):
 		with open('./docs/checklists.yaml') as file:
 			data = yaml.load(file)
 		if airplane.upper() in data:
+			
+			for c in data[airplane.upper()]['CHECKLISTS']:
+				if c == checklist.upper():
+					logger.warning(checklist.upper() + '=' + c + '->OK')
+				else:
+					logger.warning(checklist.upper() + '=' + c  + '-> NO OK')
+
 			if checklist.upper() in data[airplane.upper()]['CHECKLISTS']:
 				return dict(status='OK',data=[d for d in data[airplane]['CHECKLISTS'][checklist.upper()]])
 			else:
-				return dict(status='ERROR',data='I can not find the '+checklist+' checklist for ' + airplane + ' aircraft')
+				return dict(status='ERROR',data='I can not find the "'+checklist+'"" checklist for ' + airplane + ' aircraft')
 		else:
 			return dict(status='ERROR',data='I have no checklist for ' + airplane + ' aircraft')
 
