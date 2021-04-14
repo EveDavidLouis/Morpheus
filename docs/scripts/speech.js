@@ -28,7 +28,7 @@ if (typeof SpeechRecognition === "undefined") {
 
 	recognition.continuous = true;
 	recognition.interimResults = true;
-	recognition.lang = 'de-DE';
+	recognition.lang = 'en-US';
 	recognition.maxAlternatives = 1;
 	recognition.interimResults = true;
 
